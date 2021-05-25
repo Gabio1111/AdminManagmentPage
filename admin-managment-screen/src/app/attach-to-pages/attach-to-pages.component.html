@@ -1,0 +1,34 @@
+<!-- <h4>Select Page to authorize</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Pages</mat-label>
+  <mat-select class="mat-select"  [(ngModel)] = "selectedValues" (click)="checkValue()">
+    <mat-option *ngFor="let page of pages;  let i =index"  [value]="page.m_page_id" >
+        <input type="checkbox"  [(ngModel)]="page.ischecked"  />
+        {{page.m_page_name}}     
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button class="saveChangesb" color="primary" (click)="doWhenclkd()">Apply</button> -->
+<div *ngIf="finishedLoading | async">
+  
+  <div [hidden]="checkValue()"> </div>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h3 class="display-9">Pages Authorization</h3>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let page of pages;  let i =index"  [value]="page.m_page_id">
+            <ng-container>
+              <input type="checkbox" [(ngModel)]="page.ischecked" (click)="onOut(page)">  
+              {{page.m_page_name}}
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+ 
+  <button mat-raised-button class="saveChangesb" color="primary" (click)="clickedApply()">Apply</button>
+</div>

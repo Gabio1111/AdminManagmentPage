@@ -1,0 +1,23 @@
+
+
+    <button mat-raised-button class="addButton" data-toggle="tooltip" data-placement="bottom" color="primary" (click)="openDialogForAddButton()" title="insert another group to table">
+        Add Group
+        </button>
+
+    <button mat-raised-button class="removeButton" data-toggle="tooltip" data-placement="bottom" color="primary" (click)="openDialogForRemoveButton()" title="Remove chosen group from table (database)" [disabled] = "chosenRowIsNull===true">
+        Remove Group
+        </button>
+
+    <button mat-raised-button class="AttachButton" data-toggle="tooltip" data-placement="bottom" color="primary" (click)="openDialogForAttachPanel()" title="Authorize specified pages to group" [disabled] = "chosenRowIsNull===true">
+        Authorize pages
+        </button>
+
+
+<!-- <div *ngIf="pagesTab">
+    <button mat-raised-button class="addPageButton" data-toggle="tooltip" data-placement="bottom" color="primary" (click)="openDialogForAddPage()" title="Authorize specified pages to group">
+        Add Page
+        </button>
+</div> -->
+
+
+

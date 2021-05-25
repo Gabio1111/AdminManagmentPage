@@ -1,0 +1,15 @@
+.full-width-table{
+  width: 100%;
+ 
+}
+.page-table{
+  width: 80%;
+  margin-left: 2cm;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: rgb(205, 230, 117);
+}

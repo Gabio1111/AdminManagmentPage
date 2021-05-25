@@ -1,0 +1,38 @@
+<div class="mat-elevation-z8 role-table">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <span class="mat-column-id"></span>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.m_GRP_id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+   
+    <ng-container matColumnDef="roleName">
+      <span class="mat-column-roleName"></span>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+      <td mat-cell *matCellDef="let row">{{row.m_GRP_Name}}</td>
+    </ng-container>
+
+    <!--Description Column-->
+    <ng-container matColumnDef="description">
+      <span class="mat-column-desc"></span>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{row.m_Description}}</td>
+    </ng-container>
+
+ 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="selectRow(row)" [ngClass]="{ 'selected': row === selectedRow }"></tr> 
+
+  </table>
+
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

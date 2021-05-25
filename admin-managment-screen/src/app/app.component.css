@@ -1,0 +1,93 @@
+h1 {
+    margin-bottom: 0;
+    margin-top: 0.5cm;
+    margin-left: 20px;
+    
+    color:rgb(83, 19, 233);
+  }
+  
+  h2{
+    margin-bottom: 0;
+    margin-top: 1cm;
+    margin-left: 20px;
+    color:black;
+  }
+
+  .dialog{
+    padding-right: 50px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    
+  }
+
+  .container{
+    margin-left: 25%;
+  }
+
+  .float-container {
+    width: 100%;
+    border: 3px solid rgb(18, 21, 221);
+    margin-top: 30px;
+    padding: 5px;
+}
+
+.float-child {
+    width: 50%;
+    float:left;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+.blue{
+  padding-bottom:inherit;
+}
+
+.green{
+  padding-bottom:inherit;
+}
+
+.title-left{
+  margin-top: 1cm;
+  margin-left: 2cm;
+}
+
+.title-right{
+  margin-top: 1cm;
+  margin-left: 2cm;
+}
+
+.mat-tab{
+  width: 93%;
+  margin-left: 3.5%;
+  margin-top: 1cm;
+  color: blueviolet;
+  border-radius: 20px;
+  border-style:solid;
+  border-color:darkslateblue;
+  background-color:lightcyan;
+}
+
+
+.mat-tab-label {
+  min-width: 25px ;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px ;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
+
+

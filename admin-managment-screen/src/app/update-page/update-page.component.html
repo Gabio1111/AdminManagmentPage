@@ -1,0 +1,27 @@
+<form>
+    <div class="form-group">
+      <label>Page Name</label>
+      <input  #box1 type="text" class="form-control"  placeholder="Enter page name" name="page name" ngModel required>
+      <small  class="form-text text-muted">This field cannot by empty</small>
+    </div>
+    <div class="form-group">
+        <label>Page Root</label>
+        <input  #box2 type="number" class="form-control"  placeholder="Enter page root">
+        <small  class="form-text text-muted">This field cannot by empty</small>
+    </div>
+    <!-- <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check for Root 0</label>
+      </div> -->
+    <div class="form-group">
+        <label>Page Rout</label>
+        <input #box3 type="url" class="form-control" id="exampleInputText2" aria-describedby="" placeholder="Enter page rout">
+    </div>
+    <div class="form-group">
+        <label>Page Css</label>
+        <input #box4 type="text" class="form-control" id="exampleInputText3" aria-describedby="" placeholder="Enter page css">
+    </div>
+    
+    <button mat-raised-button class="updatePageButton" color="primary" (click) = "updatePage(box1.value,box2.value,box3.value,box4.value)">Submit</button>
+    
+  </form>

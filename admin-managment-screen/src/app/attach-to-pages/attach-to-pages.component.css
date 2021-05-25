@@ -1,0 +1,31 @@
+.saveChangesb{
+    width: 3cm;
+    margin-top: 15px;
+    margin-left: 1cm;
+}
+
+.card{
+
+    width: 6cm;
+    height:8cm;
+    overflow: auto;
+    
+}
+
+
+.display-9{
+    color: rgb(83, 19, 233);
+    font-size:large;
+    font-style:oblique;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+
+.list-group-item{
+    font-size: large;
+}
+
+
+

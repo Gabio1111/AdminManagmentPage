@@ -1,0 +1,29 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{title}}</h1>
+      <p class="lead">This page is responsible for role and authorization managment</p>
+    </div>
+</div>
+
+    <mat-tab-group class="mat-tab">
+      <mat-tab class="group-m" label="Group Managment"> 
+        <h3 class="title-left">Groups Table:</h3>
+        <app-role-tab></app-role-tab> 
+        <app-dialog></app-dialog> 
+      </mat-tab>
+      <mat-tab class="page-m" label="Pages Managment"> 
+        <h3 class="title-right">Pages Table:</h3>
+        <app-page-table></app-page-table>
+        <app-dialog-pages></app-dialog-pages>
+      </mat-tab>
+    </mat-tab-group>
+    
+
+
+
+
+
+
+
+
+
