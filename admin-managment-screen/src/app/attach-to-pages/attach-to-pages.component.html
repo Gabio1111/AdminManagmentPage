@@ -1,14 +1,4 @@
-<!-- <h4>Select Page to authorize</h4>
-<mat-form-field appearance="fill">
-  <mat-label>Pages</mat-label>
-  <mat-select class="mat-select"  [(ngModel)] = "selectedValues" (click)="checkValue()">
-    <mat-option *ngFor="let page of pages;  let i =index"  [value]="page.m_page_id" >
-        <input type="checkbox"  [(ngModel)]="page.ischecked"  />
-        {{page.m_page_name}}     
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<button mat-raised-button class="saveChangesb" color="primary" (click)="doWhenclkd()">Apply</button> -->
+
 <div *ngIf="finishedLoading | async">
   
   <div [hidden]="checkValue()"> </div>

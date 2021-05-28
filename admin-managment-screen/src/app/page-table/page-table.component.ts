@@ -38,7 +38,8 @@ export class PageTableComponent implements AfterViewInit {
   ngOnInit(): void {
 
     this.grpService.RefreshForPages$.subscribe(()=>{
-    this.sharedServices.currentMessage.subscribe(res => (this.message = res));
+    this.sharedServices.currentMessage.subscribe(res => {
+      this.message = res});
     if(this.message.m_page_id==null){
       this.addPageToTable();
     }
@@ -63,6 +64,7 @@ export class PageTableComponent implements AfterViewInit {
   }
 
   updatePageAtTable(){
+
     const idx_editedRow = this.dataSource.data.indexOf(this.selectedRow);
     this.dataSource.data.splice(idx_editedRow,1,this.message);
     this.table.dataSource = this.dataSource.data;

@@ -63,31 +63,10 @@ h1 {
   color: blueviolet;
   border-radius: 20px;
   border-style:solid;
-  border-color:darkslateblue;
-  background-color:lightcyan;
+  border-color:rgb(224, 222, 235);
+  background-color:rgb(252, 252, 252);
 }
 
 
-.mat-tab-label {
-  min-width: 25px ;
-  padding: 5px;
-  background-color: transparent;
-  color: red;
-  font-weight: 700;
-}
-
-/* Styles for the active tab label */
-.mat-tab-label.mat-tab-label-active {
-  min-width: 25px ;
-  padding: 5px;
-  background-color: transparent;
-  color: red;
-  font-weight: 700;
-}
-
-/* Styles for the ink bar */
-.mat-ink-bar {
-  background-color: green;
-}
 
 
