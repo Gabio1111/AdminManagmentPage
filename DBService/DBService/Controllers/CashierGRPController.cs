@@ -112,8 +112,24 @@ namespace DBService.Controllers
         [Route("UpdatePage")]
         public void updatePage(Pages i_page)
         {
-            string[] paramNames = { "@ID","@Root", "@Name", "@Rout", "@Css"};
+            string[] paramNames = { "@ID", "@Root", "@Name", "@Rout", "@Css" };
             int affectedRows = m_ServerCommunicationProtocol.updateObject("spUpdatePage", paramNames, null, i_page);
+        }
+
+        //[HttpPost]
+        //[Route("AddCashier")]
+        //public void addCashier(CashierWorker cashierWorker)
+        //{
+        //    string[] paramNames = { "@CASHIERGRPID", "@CASHIERKEY", "@CASHIERPASSWORD", "@CASHIERNAME", "@CASHIERDISABLED", "@CASHIERSAREACONTROL", "@DELFLAG", "@UPDATENUM", "@RETURN" };
+        //    int returnedId = m_ServerCommunicationProtocol.postCashier("spAddCashier",paramNames,cashierWorker);
+        //}
+
+        [HttpPut]
+        [Route("CtoP")]
+        public void attachCashierToGrp(CashierWorker worker)
+        {
+            string[] paramNames = { "@CASHIERID", "@GRPID" };
+            int affectedRows = m_ServerCommunicationProtocol.attachCashierToGrp("spAttachCashierToGrp2", paramNames, worker);
         }
     }
 }

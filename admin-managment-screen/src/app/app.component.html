@@ -7,14 +7,20 @@
 
     <mat-tab-group class="mat-tab">
       <mat-tab class="group-m" label="Group Managment"> 
-        <h3 class="title-left">Groups Table:</h3>
+        <h4 class="title-left">Groups Operations:</h4>
         <app-role-tab></app-role-tab> 
         <app-dialog></app-dialog> 
       </mat-tab>
       <mat-tab class="page-m" label="Pages Managment"> 
-        <h3 class="title-right">Pages Table:</h3>
+        <h4 class="title-right">Pages Operations:</h4>
         <app-page-table></app-page-table>
         <app-dialog-pages></app-dialog-pages>
+      </mat-tab>
+      <mat-tab class="cashier-m" label="Cashier Managment"> 
+        <h4 class="title-right">Cashier Operations:</h4>
+        <app-dialog-cashier>
+          <app-cashier-to-grp></app-cashier-to-grp>
+        </app-dialog-cashier>
       </mat-tab>
     </mat-tab-group>
     

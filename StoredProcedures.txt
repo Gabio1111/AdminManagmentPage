@@ -1,0 +1,226 @@
+CREATE PROC [dbo].[spAddCashier](
+
+@CASHIERGRPID INT NULL,
+@CASHIERKEY NVARCHAR(500)  NULL,
+@CASHIERPASSWORD NVARCHAR(500) NULL,
+@CASHIERNAME NVARCHAR(250) NULL,
+@CASHIERDISABLED BIT NULL,
+@CASHIERSAREACONTROL BIT NULL,
+@DELFLAG BIT NULL,
+@UPDATENUM INT NULL,
+@RETURN INT OUT
+)
+AS 
+BEGIN
+	INSERT INTO DBO.CASHIER(CASHIERGRPID,CASHIERKEY,CASHIERPASSWORD,CASHIERNAME,CASHIERDISABLED,CASHIERSAREACONTROL,DELFLAG,UPDATENUM)
+	VALUES(
+	@CASHIERGRPID,
+	@CASHIERKEY,
+	@CASHIERPASSWORD,
+	@CASHIERNAME,
+	@CASHIERDISABLED,
+	@CASHIERSAREACONTROL,
+	@DELFLAG,
+	@UPDATENUM
+	)
+	SET @RETURN = @@IDENTITY
+	DELETE FROM DBO.MNG_CASHIER_To_GRP 
+	WHERE CASHIERID = @RETURN
+	INSERT INTO DBO.MNG_CASHIER_To_GRP(CASHIERID,GRPID)
+	VALUES(@RETURN,@CASHIERGRPID)
+	
+END
+GO
+
+
+
+
+
+
+
+CREATE PROC [dbo].[spAddPage] (
+@pageRoot int null,
+@pageName nvarchar(200) null,
+@pageRout nvarchar(500) null,
+@pageCss nvarchar(500) null,
+@RETURN int out
+)
+as 
+begin
+INSERT INTO DBO.MNG_Pages (RootPage,PageName,PageRout,PageCss)
+VALUES(@pageRoot,@pageName,@pageRout,@pageCss)
+set @RETURN = @@IDENTITY
+END
+GO
+
+
+
+
+
+
+
+CREATE PROC [dbo].[spAttachCashierToGrp2]
+@CASHIERID INT,
+@GRPID INT
+AS 
+BEGIN
+
+IF EXISTS (SELECT CASHIERID FROM DBO.MNG_CASHIER_To_GRP WHERE CASHIERID = @CASHIERID )
+	BEGIN
+	UPDATE DBO.MNG_CASHIER_To_GRP
+	SET
+	GRPID = @GRPID where CASHIERID = @CASHIERID AND @GRPID IN(SELECT Id FROM DBO.MNG_CASHIER_GRP)
+	END
+ELSE
+	BEGIN
+	IF EXISTS (SELECT CASHIERID FROM DBO.CASHIER WHERE CASHIERID = @CASHIERID AND @GRPID IN(SELECT id FROM DBO.MNG_CASHIER_GRP))
+	BEGIN
+	INSERT INTO DBO.MNG_CASHIER_To_GRP(CASHIERID,GRPID)
+	VALUES(@CASHIERID,@GRPID)
+	END
+	END
+END
+GO
+
+
+
+
+
+
+
+CREATE procedure [dbo].[spAttachPageToGroup]
+@GrpToPage GRP_to_Pages readonly,
+@grp_ID int 
+as
+begin
+
+	delete from dbo.MNG_Pages_To_GRP
+	where GRPID = @grp_ID
+	insert into dbo.MNG_Pages_To_GRP (PAGEID,GRPID)
+	select gtp.PAGEID , gtp.GRPID from @GrpToPage as gtp;
+
+end
+GO
+
+
+
+
+
+
+
+create procedure [dbo].[spCashierGRPfullData]
+as
+begin
+select * from dbo.MNG_CASHIER_GRP;
+end
+GO
+
+
+
+
+
+
+
+create proc [dbo].[spDeleteRowById] @id int
+as
+begin
+DELETE FROM dbo.MNG_CASHIER_GRP WHERE id = @id;
+end
+GO
+
+
+
+
+
+
+
+CREATE procedure [dbo].[spGetAllPages]
+@IDGroup int
+as
+begin
+	select  mp.Id, mp.PageName ,mpg.GRPID 
+	from dbo.MNG_Pages as mp
+	left join dbo.MNG_Pages_To_GRP as mpg on mp.Id=mpg.PAGEID and mpg.GRPID = @IDGroup
+	--where  or mpg.GRPID is null --or mpg.GRPID is not null   --and mpg.PAGEID 
+end
+
+--select  mp.Id, mp.PageName  from dbo.MNG_Pages mp
+GO
+
+
+
+
+
+
+
+create proc [dbo].[spGetPages] 
+as begin
+select * from dbo.MNG_Pages 
+end
+GO
+
+
+
+
+
+
+create proc [dbo].[spGRPbyID] @id int
+as 
+begin
+select * from dbo.MNG_CASHIER_GRP
+where id=@id
+end
+GO
+
+
+
+
+
+
+CREATE procedure [dbo].[spInsertGroupToTable]
+@GRP_Name nvarchar(200) =null,
+@GRP_Description nvarchar(500) = null,
+@RETURN int out
+as
+begin
+	insert into dbo.MNG_CASHIER_GRP (GRP_Name,GRP_Description) 
+	values (@GRP_Name,@GRP_Description)
+	set @RETURN = @@IDENTITY
+end
+GO
+
+
+
+
+
+
+CREATE PROC [dbo].[spUpdatePage]
+@ID int,
+@Root int,
+@Name nvarchar(250),
+@Rout nvarchar(500),
+@Css nvarchar(500)
+
+as 
+begin
+
+update MNG_Pages
+set 
+RootPage=@Root,
+PageName=@Name,
+PageRout=@Rout,
+PageCss=@Css
+where Id=@ID
+end
+GO
+
+
+
+
+
+
+
+
+
+
+

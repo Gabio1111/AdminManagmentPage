@@ -47,12 +47,12 @@ h1 {
 }
 
 .title-left{
-  margin-top: 1cm;
+  margin-top: 20px;
   margin-left: 2cm;
 }
 
 .title-right{
-  margin-top: 1cm;
+  margin-top: 20px;
   margin-left: 2cm;
 }
 
@@ -60,7 +60,7 @@ h1 {
   width: 93%;
   margin-left: 3.5%;
   margin-top: 1cm;
-  color: blueviolet;
+  color: rgb(0, 0, 0);
   border-radius: 20px;
   border-style:solid;
   border-color:rgb(224, 222, 235);

@@ -356,6 +356,109 @@ namespace DBService.Models
             }
         }
 
+        //public int postCashier(string sp,string[] i_params,CashierWorker cashierWorker)
+        //{
+        //    using(m_myConnection = new SqlConnection(connectionString))
+        //    {
+        //        openConnction(sp);
+
+        //        foreach (string name in i_params)
+        //        {
+        //            if (!name.Contains("@"))
+        //            {
+        //                string str = string.Format("@{0}", name);
+        //            }
+        //            switch (name)
+        //            {
+
+        //                case "@CASHIERGRPID":
+
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierGrpId);
+        //                    break;
+
+        //                case "@CASHIERKEY":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierKey);
+        //                    break;
+
+        //                case "@CASHIERPASSWORD":
+
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierPassword);
+        //                    break;
+
+        //                case "@CASHIERNAME":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierName);
+        //                    break;
+
+        //                case "@CASHIERDISABLED":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierDisabled);
+        //                    break;
+
+        //                case "@CASHIERSAREACONTROL":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_CashierAreaControl);
+        //                    break;
+
+        //                case "@DELFLAG":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_DelFlag);
+        //                    break;
+
+        //                case "@UPDATENUM":
+        //                    m_sqlCommand.Parameters.AddWithValue(name, cashierWorker.m_UpdateNum);
+        //                    break;
+
+        //                case "@RETURN":
+        //                    m_sqlCommand.Parameters.Add(name, SqlDbType.Int);
+        //                    m_sqlCommand.Parameters[name].Direction = ParameterDirection.Output;
+
+        //                    break;
+
+
+        //                default:
+        //                    break;
+        //            }
+
+        //        }
+
+        //        int affectedRows = m_sqlCommand.ExecuteNonQuery();
+        //        newIdentity = Convert.ToInt32(m_sqlCommand.Parameters["@RETURN"].Value);
+        //        return newIdentity == 0 ? throw new NullReferenceException(" output parameter is null") : newIdentity;
+        //    }
+        //}
+
+        public int attachCashierToGrp(string sp, string[] i_params, CashierWorker worker)
+        {
+            using (m_myConnection = new SqlConnection(connectionString))
+            {
+                openConnction(sp);
+
+                foreach (string name in i_params)
+                {
+                    if (!name.Contains("@"))
+                    {
+                        string str = string.Format("@{0}", name);
+                    }
+                    switch (name)
+                    {
+
+                        case "@GRPID":
+
+                            m_sqlCommand.Parameters.AddWithValue(name, worker.m_CashierGrpId);
+                            break;
+
+                        case "@CASHIERID":
+                            m_sqlCommand.Parameters.AddWithValue(name, worker.m_CashierId);
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                }
+
+                return m_sqlCommand.ExecuteNonQuery();
+            }
+
+        }
+
     }
 
 

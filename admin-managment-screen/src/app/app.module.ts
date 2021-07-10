@@ -25,7 +25,8 @@ import { AddPageComponent } from './add-page/add-page.component'
 import {MatTabsModule} from '@angular/material/tabs';
 import { DialogPagesComponent } from './dialog-pages/dialog-pages.component';
 import { UpdatePageComponent } from './update-page/update-page.component';
-
+import { DialogCashierComponent } from './dialog-cashier/dialog-cashier.component';
+import { CashierToGrpComponent } from './cashier-to-grp/cashier-to-grp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,9 @@ import { UpdatePageComponent } from './update-page/update-page.component';
     PageTableComponent,
     AddPageComponent,
     DialogPagesComponent,
-    UpdatePageComponent
+    UpdatePageComponent,
+    CashierToGrpComponent,
+    DialogCashierComponent
     
   ],
   imports: [

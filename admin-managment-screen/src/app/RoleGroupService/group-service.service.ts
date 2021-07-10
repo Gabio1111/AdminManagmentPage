@@ -6,6 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { RoleTabItem } from 'src/app/role-tab/role-tab-datasource';
 import {Pages} from '../attach-to-pages/attach-to-pages.component';
 import {SharedDataService} from '../shared-data.service'
+import { Cashier } from '../cashier-to-grp/cashier-to-grp.component';
 
 
 
@@ -81,6 +82,10 @@ export class GroupServiceService {
 
   updatePage(i_page:Pages){
     return this.http.put(this.rootURL + "/UpdatePage", i_page, this.httpOptions);
+  }
+
+  attachCashierToGrp(i_cashier:Cashier){
+    return this.http.put(this.rootURL + "/CtoP" , i_cashier,this.httpOptions);
   }
 }
    

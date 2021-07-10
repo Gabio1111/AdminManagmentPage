@@ -1,0 +1,15 @@
+<form>
+    <div class="form-group">
+      <label>Cashier ID</label>
+      <input  #box1 type="number" id="box1" name="box1" class="form-control"  placeholder="Enter Id"  required
+      minlength="1">
+      <small  class="form-text text-muted">This field cannot by empty</small>
+    </div>
+    <div class="form-group">
+        <label>Cashier Group ID</label>
+        <input  #box2 type="number" class="form-control"  placeholder="Enter group id">
+        <small  class="form-text text-muted">This field cannot by empty</small>
+    </div>
+
+    <button mat-raised-button class="attachCashierButton" color="primary" (click) = "attachCashier(box1.value,box2.value)">Submit</button>
+</form>
