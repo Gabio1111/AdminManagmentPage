@@ -29,7 +29,7 @@ namespace DBService.Controllers
             Dictionary<string,int> param_arr = new Dictionary<string, int>();
             param_arr.Add("id", id);
             List<object> grpList = new List<object>();
-            grpList = m_ServerCommunicationProtocol.getGroups("spGRPbyID", param_arr,"group");
+            grpList = m_ServerCommunicationProtocol.getGroups("MNG_spGRPbyID", param_arr,"group");
 
             return grpList[0];
 
@@ -41,7 +41,7 @@ namespace DBService.Controllers
         {
            
             List<object> groupList = new List<object>();
-            groupList = m_ServerCommunicationProtocol.getGroups("spCashierGRPfullData",groupOrPage:"group");
+            groupList = m_ServerCommunicationProtocol.getGroups("MNG_spCashierGRPfullData", groupOrPage:"group");
             return groupList;
         }
 
@@ -51,7 +51,7 @@ namespace DBService.Controllers
         public int addGroup(CashierGroup cashier)
         {
             string[] paramNames = { "@GRP_Name", "@GRP_Description","@RETURN" };
-            int returnedIdentity = m_ServerCommunicationProtocol.postGroupOrPages("spInsertGroupToTable", paramNames, cashier);
+            int returnedIdentity = m_ServerCommunicationProtocol.postGroupOrPages("MNG_spInsertGroupToTable", paramNames, cashier);
             return returnedIdentity;
         }
 
@@ -64,7 +64,7 @@ namespace DBService.Controllers
             {
                 throw new Exception("cannot send empty root OR page name");
             }
-            int returnedIdentity = m_ServerCommunicationProtocol.postGroupOrPages("spAddPage", paramNames,null,page,true);
+            int returnedIdentity = m_ServerCommunicationProtocol.postGroupOrPages("MNG_spAddPage", paramNames,null,page,true);
             return returnedIdentity;
         }
 
@@ -74,7 +74,7 @@ namespace DBService.Controllers
         {
             Dictionary<string, int> param_arr = new Dictionary<string, int>();
             param_arr.Add("id", id);
-            int rows_Affected = m_ServerCommunicationProtocol.deleteObject("spDeleteRowById", param_arr);
+            int rows_Affected = m_ServerCommunicationProtocol.deleteObject("MNG_spDeleteRowById", param_arr);
 
         }
 
@@ -85,7 +85,7 @@ namespace DBService.Controllers
             Dictionary<string, int> param_arr = new Dictionary<string, int>();
             param_arr.Add("IDGroup", id);
             List<object> pageList = new List<object>();
-            pageList=m_ServerCommunicationProtocol.getGroups("spGetAllPages", param_arr, "pageWithId");
+            pageList=m_ServerCommunicationProtocol.getGroups("MNG_spGetAllPages", param_arr, "pageWithId");
             return pageList;
         }
 
@@ -95,7 +95,7 @@ namespace DBService.Controllers
         {
 
             List<object> pageList = new List<object>();
-            pageList = m_ServerCommunicationProtocol.getGroups("spGetPages", null, "page");
+            pageList = m_ServerCommunicationProtocol.getGroups("MNG_spGetPages", null, "page");
             return pageList;
         }
 
@@ -105,7 +105,7 @@ namespace DBService.Controllers
         public void groupToPage(Pages i_page)
         {
             string[] parameter_names = { "GrpToPage" , "grp_ID" };
-            int affectedRows = m_ServerCommunicationProtocol.postGroupOrPages("spAttachPageToGroup", parameter_names,null, i_page);
+            int affectedRows = m_ServerCommunicationProtocol.postGroupOrPages("MNG_spAttachPageToGroup", parameter_names,null, i_page);
         }
 
         [HttpPut]
@@ -113,7 +113,7 @@ namespace DBService.Controllers
         public void updatePage(Pages i_page)
         {
             string[] paramNames = { "@ID", "@Root", "@Name", "@Rout", "@Css" };
-            int affectedRows = m_ServerCommunicationProtocol.updateObject("spUpdatePage", paramNames, null, i_page);
+            int affectedRows = m_ServerCommunicationProtocol.updateObject("MNG_spUpdatePage", paramNames, null, i_page);
         }
 
         //[HttpPost]
@@ -129,7 +129,7 @@ namespace DBService.Controllers
         public void attachCashierToGrp(CashierWorker worker)
         {
             string[] paramNames = { "@CASHIERID", "@GRPID" };
-            int affectedRows = m_ServerCommunicationProtocol.attachCashierToGrp("spAttachCashierToGrp2", paramNames, worker);
+            int affectedRows = m_ServerCommunicationProtocol.attachCashierToGrp("MNG_spAttachCashierToGrp2", paramNames, worker);
         }
     }
 }

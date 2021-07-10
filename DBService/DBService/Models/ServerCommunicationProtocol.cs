@@ -12,7 +12,7 @@ namespace DBService.Models
         public SqlDataReader m_reader = null;
         public SqlConnection m_myConnection;
         public SqlCommand m_sqlCommand;
-        private string connectionString = @"Data Source=DESKTOP-58LSK5U\SQLEXPRESSGabio;Initial Catalog = testDB; Integrated Security = True";
+        private string connectionString = @"Data Source=sqlbochkadev;Initial Catalog=ManagerServer;Persist Security Info=True;User ID=Alex;Password=DDe34-aa";//connectionString = @"Data Source=DESKTOP-58LSK5U\SQLEXPRESSGabio;Initial Catalog = testDB; Integrated Security = True";
         private static readonly object padlock = new object();
         private static readonly object padlock2 = new object();
         private static ServerCommunicationProtocol instance = null;
@@ -46,7 +46,7 @@ namespace DBService.Models
             try 
             {
                 m_sqlCommand = new SqlCommand(i_sqlCmd, m_myConnection);
-                if (i_sqlCmd.StartsWith("sp"))
+                if (i_sqlCmd.StartsWith("MNG_sp"))
                 {
                     m_sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 }
